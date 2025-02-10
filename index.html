@@ -3,81 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test WhatsApp Widget</title>
-    <!-- Comagic Script -->
-    <script type="text/javascript">
-        // Initialize Comagic object and ready queue
-        window.Comagic = window.Comagic || {};
-        window.Comagic.ready = window.Comagic.ready || [];
-
-        // Script loader
-        (function(w, d, s, h, id) {
-            w.ComagicObject = h;
-            w[h] = w[h] || function() {
-                (w[h].q = w[h].q || []).push(arguments)
-            };
-            var js = d.createElement(s),
-                fjs = d.getElementsByTagName(s)[0];
-            js.id = id;
-            js.src = "https://app.comagic.ru/comagic.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        })(window, document, 'script', 'Comagic', 'comagic-jssdk');
-
-        // Initialize handlers when Comagic is ready
-        window.Comagic.ready.push(function() {
-            initializeWhatsAppHandlers();
-        });
-
-        // WhatsApp handler initialization
-        function initializeWhatsAppHandlers() {
-            // Handle WhatsApp button clicks
-            const whatsappButtons = document.querySelectorAll('[data-whatsapp-trigger]');
-            whatsappButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    
-                    if (typeof Comagic !== 'undefined' && typeof Comagic.omni !== 'undefined') {
-                        Comagic.omni.forwardWhatsApp('97148797272');
-                    } else {
-                        console.error('Comagic not initialized');
-                        // Fallback to direct WhatsApp link
-                        window.open('https://wa.me/97148797272', '_blank');
-                    }
-                });
-            });
-        }
-    </script>
-    <!-- End of Comagic Script -->
-    <style>
-        /* Basic Styling */
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        /* Test Buttons */
-        .test-button {
-            margin: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .test-button:hover {
-            background: #0056b3;
-        }
-    </style>
+    <title>Test WhatsApp & CallGear Integration</title>
 </head>
 <body>
-    <h1>Test WhatsApp Integration</h1>
-    <p>Click the button below to test the functionality.</p>
-    
-    <!-- Comagic WhatsApp Button -->
-    <button class="test-button" data-whatsapp-trigger>
+    <h1>Test WhatsApp & CallGear Integration</h1>
+    <p>Click the buttons below to test the functionality.</p>
+
+    <!-- Test Buttons -->
+    <button onclick="Comagic.omni.forwardWhatsApp('97148797272');">
         Test WhatsApp via Comagic
     </button>
+
+    <button onclick="Comagic.openWidget();">
+        Test CallGear Callback Widget
+    </button>
+
+    <!-- CallGear Script -->
+    <!-- This script connects the site to CallGear's Comagic system -->
+    <script type="text/javascript" async src="https://app.callgear.ae/static/cs.min.js?k=ZCCbA4llImb08pgeGeXNMfvEYXuVe2ex"></script>
 </body>
 </html>
